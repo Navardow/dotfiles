@@ -1,0 +1,12 @@
+[general]
+import = [
+    "~/.dotfiles/config/alacritty/themes/alacritty-theme/themes/dracula_plus.toml"
+]
+[window]
+decorations="None"
+opacity=0.9
+
+[font]
+size = 14
+
+
