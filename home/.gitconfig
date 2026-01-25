@@ -5,9 +5,9 @@
 [alias]
     ci = commit
     cm = commit -m
-    ca = commit --ammend
-    cane = commit --ammend --no-edit
+    ca = commit --amend
+    cane = commit --amend --no-edit
     lg = log --oneline --graph --decorate --all
     graph = log --oneline --graph --decorate --all
     last = log -1 HEAD
-
+    s = status

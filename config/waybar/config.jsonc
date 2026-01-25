@@ -3,7 +3,6 @@
         "~/.dotfiles/config/waybar/modules/workspaces.jsonc",
         "~/.dotfiles/config/waybar/modules/battery.jsonc",
         "~/.dotfiles/config/waybar/modules/network.jsonc",
-        "~/.dotfiles/config/waybar/modules/tray.jsonc",
         "~/.dotfiles/config/waybar/modules/pulseaudio.jsonc",
         "~/.dotfiles/config/waybar/modules/cpu.jsonc",
         "~/.dotfiles/config/waybar/modules/memory.jsonc",
@@ -25,7 +24,6 @@
         "cpu",
         "memory", 
         "battery", 
-        "tray", 
         "clock"
     ],
     "niri/workspaces": {

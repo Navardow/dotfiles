@@ -61,7 +61,7 @@ git_state() {
 PS1=""
 PS1+="${CLR_WHITE}${TOP_ARROW}"
 PS1+="${CLR_GRAY} \u "
-PS1+="${CLR_PURPLE}\W "
+PS1+="${CLR_PURPLE}\w "
 PS1+="${CLR_GREEN}\$(__git_ps1 \"(${GIT_ICON}:%s)\")\$(git_state)"
 PS1+="\n${CLR_WHITE}${ARROW_ICON}${CLR_RESET}"
 
