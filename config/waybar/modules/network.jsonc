@@ -5,5 +5,5 @@
         "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
         "format-disconnected": "Disconnected ⚠"
     },
-    "on-click": "nmtui"
+    "on-click": "/usr/sbin/nm-connection-editor"
 }

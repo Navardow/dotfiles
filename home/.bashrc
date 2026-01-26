@@ -11,16 +11,16 @@ export GIT_PS1_SHOWSTASHSTATE=1
 
 #Colors
 # Reset
-CLR_RESET="\033[0m"
+CLR_RESET="\[\033[0m\]"
 # Foreground colors
-CLR_GRAY="\033[90m"
-CLR_RED="\033[31m"
-CLR_GREEN="\033[32m"
-CLR_YELLOW="\033[33m"
-CLR_PURPLE="\033[38;2;189;147;249m"
-CLR_MAGENTA="\033[35m"
-CLR_CYAN="\033[36m"
-CLR_WHITE="\033[97m"
+CLR_GRAY="\[\033[90m\]"
+CLR_RED="\[\033[31m\]"
+CLR_GREEN="\[\033[32m\]"
+CLR_YELLOW="\[\033[33m\]"
+CLR_PURPLE="\[\033[38;2;189;147;249m\]"
+CLR_MAGENTA="\[\033[35m\]"
+CLR_CYAN="\[\033[36m\]"
+CLR_WHITE="\[\033[97m\]"
 
 
 #Icons
@@ -36,35 +36,45 @@ TOP_ARROW="╭─"
 
 #functions
 git_state() {
+    
     git rev-parse --is-inside-work-tree &>/dev/null || return
 
     # staged changes
     if ! git diff --cached --quiet 2>/dev/null; then
-        printf "${CLR_YELLOW}${PLUS_ICON}${CLR_RESET}"
+        echo "STAGED"
         return
     fi
 
-    # unstaged or untracked changes
+   # unstaged or untracked changes
     if [[ -n $(git status --porcelain 2>/dev/null) ]]; then
-        printf "${CLR_RED}${X_ICON}${CLR_RESET}"
+        echo "DIRTY"
         return
     fi
 
-    # clean repo — only show ✓ if NO stash exists
+   # clean repo — only show ✓ if NO stash exists
     if ! git stash list | grep -q .; then
-        printf "${CLR_GREEN}${CHECK_ICON}${CLR_RESET}"
+        echo "CLEAN"
     fi
 }
-
 
 # Prompt
 PS1=""
 PS1+="${CLR_WHITE}${TOP_ARROW}"
 PS1+="${CLR_GRAY} \u "
 PS1+="${CLR_PURPLE}\w "
-PS1+="${CLR_GREEN}\$(__git_ps1 \"(${GIT_ICON}:%s)\")\$(git_state)"
-PS1+="\n${CLR_WHITE}${ARROW_ICON}${CLR_RESET}"
 
+PS1+="${CLR_GREEN}\$(__git_ps1 \"(${GIT_ICON}:%s)\")"
+
+PS1+="\$( \
+  state=\$(git_state); \
+  case \"\$state\" in \
+    STAGED) echo \"${CLR_YELLOW}${PLUS_ICON}${CLR_RESET}\" ;; \
+    DIRTY)  echo \"${CLR_RED}${X_ICON}${CLR_RESET}\" ;; \
+    CLEAN)  echo \"${CLR_GREEN}${CHECK_ICON}${CLR_RESET}\" ;; \
+  esac \
+)"
+
+PS1+="\n${CLR_WHITE}${ARROW_ICON}${CLR_RESET} "
 
 ## aliases
 alias update='sudo pacman -Syu --color=auto'
