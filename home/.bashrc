@@ -4,11 +4,6 @@ unset GIT_PS1_SHOWDIRTYSTATE
 unset GIT_PS1_SHOWUNTRACKEDFILES
 export GIT_PS1_SHOWSTASHSTATE=1
 
-
-#
-# ~/.bashrc
-#
-
 #Colors
 # Reset
 CLR_RESET="\[\033[0m\]"
@@ -21,7 +16,6 @@ CLR_PURPLE="\[\033[38;2;189;147;249m\]"
 CLR_MAGENTA="\[\033[35m\]"
 CLR_CYAN="\[\033[36m\]"
 CLR_WHITE="\[\033[97m\]"
-
 
 #Icons
 FOLDER_ICON="󰉋"
@@ -61,7 +55,7 @@ git_state() {
 PS1=""
 PS1+="${CLR_WHITE}${TOP_ARROW}"
 PS1+="${CLR_GRAY} \u "
-PS1+="${CLR_PURPLE}\w "
+PS1+="${CLR_PURPLE}\W "
 
 PS1+="${CLR_GREEN}\$(__git_ps1 \"(${GIT_ICON}:%s)\")"
 
@@ -115,6 +109,9 @@ alias unstow='stow -D'
 #power control
 alias gts='systemctl sleep'
 
+
+#xdg-open command
+alias open='xdg-open'
 
 export PATH="/usr/local/bin:$PATH"
 

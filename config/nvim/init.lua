@@ -1,1 +1,1 @@
-require("vardo")
+require("vardo.config")

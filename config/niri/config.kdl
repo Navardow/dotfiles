@@ -69,21 +69,20 @@ input {
     // focus-follows-mouse max-scroll-amount="0%"
 }
 
-workspace "Code " {
 
+workspace "Code " {}
+
+workspace "Browse " {}
+
+workspace "work " {}
+
+workspace "Music "{}
+
+workspace "Planner " {
+    open-on-output "eDP-1"
 }
 
-workspace "Browser " {
 
-}
-
-workspace "work " {
-
-}
-
-workspace "Music "{
-
-}
 // You can configure outputs by their name, which you can find
 // by running `niri msg outputs` while inside a niri instance.
 // The built-in laptop monitor is usually called "eDP-1".
@@ -270,7 +269,7 @@ layout {
     // Top and bottom struts will simply add outer gaps in addition to the area occupied by
     // layer-shell panels and regular gaps.
     struts {
-        // left 64
+        // left 0
         // right 64
         // top 64
         // bottom 64
@@ -286,6 +285,7 @@ layout {
 spawn-at-startup "waybar"
 spawn-at-startup "mako"
 spawn-at-startup "swww"
+spawn-at-startup "firefox"  "https://web.structured.app/"
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
 
@@ -317,9 +317,14 @@ animations {
     // off
 
     // Slow down all animations by this factor. Values below 1 speed them up instead.
-    // slowdown 3.0
+    // slowdown 0.8
 }
 
+// Window rules
+window-rule {
+    match title=r#"Structured"#
+    open-on-workspace "Planner "
+}
 // Window rules let you adjust behavior for individual windows.
 // Find more information on the wiki:
 // https://yalter.github.io/niri/Configuration:-Window-Rules
@@ -366,6 +371,8 @@ window-rule {
     geometry-corner-radius 8
     clip-to-geometry true
 }
+
+
 
 binds {
     // Keys consist of modifiers separated by + signs, followed by an XKB key name
