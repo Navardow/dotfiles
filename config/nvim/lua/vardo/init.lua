@@ -1,4 +1,4 @@
-require("config.set")
-require("config.remap")
-require("core.lazy")
-require("core.lsp")
+require("vardo.config.set")
+require("vardo.config.remap")
+require("vardo.core.lazy")
+require("vardo.core.lsp")
