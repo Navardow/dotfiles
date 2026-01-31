@@ -16,3 +16,7 @@
 
 [init]
 	defaultBranch = main
+[core]
+	editor = nvim
+[remote "origin"]
+	prune = true
