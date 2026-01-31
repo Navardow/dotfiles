@@ -118,3 +118,6 @@ export PATH="/usr/local/bin:$PATH"
 
 
 
+
+# Turso
+export PATH="$PATH:/home/Vardo/.turso"

@@ -11,6 +11,7 @@ return {
     config = function()
         require("conform").setup({
             formatters_by_ft = {
+                astro = { "prettierd" , "prettier" }
             }
         })
         local capabilities = vim.tbl_deep_extend(
@@ -29,6 +30,8 @@ return {
                 "vtsls",
                 "tailwindcss",
                 "astro",
+                "html",
+                "cssls",
             },
 
             -- handlers table, what configures all installed lsps
@@ -92,6 +95,14 @@ return {
                     lspconfig.tailwindcss.setup({
                         capabilities = capabilities,
                         filetypes = { "html", "css", "scss", "javascript", "javascriptreact", "typescript", "typescriptreact", "vue", "svelte", "heex" },
+                    })
+                end,
+
+                ["astro"] = function()
+                    local lspconfig = require("astro")
+                    lspconfig["astro"].setup({
+                        capabilities = capabilities,
+                        filetypes = { "astro" },
                     })
                 end,
 
