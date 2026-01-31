@@ -37,6 +37,7 @@ return {
                 "rust_analyzer",
                 "vtsls",
                 "tailwindcss",
+                "astro",
             },
 
             -- handlers table, what configures all installed lsps
