@@ -4,13 +4,7 @@ return {
         "stevearc/conform.nvim",
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
-        "hrsh7th/cmp-nvim-lsp",
-        "hrsh7th/cmp-buffer",
-        "hrsh7th/cmp-path",
-        "hrsh7th/cmp-cmdline",
-        "hrsh7th/nvim-cmp",
         "L3MON4D3/LuaSnip",
-        "saadparwaiz1/cmp_luasnip",
         "j-hui/fidget.nvim",
     },
 
@@ -19,14 +13,11 @@ return {
             formatters_by_ft = {
             }
         })
-        local cmp = require('cmp')
-        local cmp_lsp = require("cmp_nvim_lsp")
         local capabilities = vim.tbl_deep_extend(
             "force",
             {},
             vim.lsp.protocol.make_client_capabilities(),
-            cmp_lsp.default_capabilities())
-
+            require("blink.cmp").get_lsp_capabilities())
         require("fidget").setup({})
         require("mason").setup()
         require("mason-lspconfig").setup({
@@ -63,7 +54,6 @@ return {
                     })
                     vim.g.zig_fmt_parse_errors = 0
                     vim.g.zig_fmt_autosave = 0
-
                 end,
 
                 ["lua_ls"] = function()
@@ -77,7 +67,7 @@ return {
                                     version = 'LuaJIT',
                                 },
                                 diagnostics = {
-                                    globals = {'vim'},
+                                    globals = { 'vim' },
                                 },
                                 workspace = {
                                     library = vim.api.nvim_get_runtime_file("", true),
@@ -110,6 +100,7 @@ return {
         })
 
         -- cmp, code completion support setup
+        --[[
         local cmp_select = { behavior = cmp.SelectBehavior.Select }
         cmp.setup({
             snippet = {
@@ -148,6 +139,6 @@ return {
                 header = "",
                 prefix = "",
             },
-        })
+        })]] --
     end
 }
