@@ -1,45 +1,45 @@
 return {
-    {
-        "folke/trouble.nvim",
-        opts = {}, -- for default options, refer to the configuration section for custom setup.
-        cmd = "Trouble",
-        keys = {
-            -- workspace diagnostics
-            {
-                "<leader>tt",
-                "<cmd>Trouble diagnostics toggle<cr>",
-                desc = "Diagnostics (Trouble)",
-            },
-            -- buffer diagnostics
-            {
-                "<leader>tb",
-                "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
-                desc = "Buffer Diagnostics (Trouble)",
-            },
-            -- symbol (outline) show list of symbols
-            {
-                "<leader>ts",
-                "<cmd>Trouble symbols toggle focus=false<cr>",
-                desc = "Symbols (Trouble)",
-            },
-            -- Lsp stuff (definitions / refs / implementations)
-            {
-                "<leader>tl",
-                "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
-                desc = "LSP Definitions / references / ... (Trouble)",
-            },
-            -- Location list
-            {
-                "<leader>to",
-                "<cmd>Trouble loclist toggle<cr>",
-                desc = "Location List (Trouble)",
-            },
-            -- quickfix list
-            {
-                "<leader>tq",
-                "<cmd>Trouble qflist toggle<cr>",
-                desc = "Quickfix List (Trouble)",
-            },
-        },
-    }
+	{
+		"folke/trouble.nvim",
+		opts = {}, -- for default options, refer to the configuration section for custom setup.
+		cmd = "Trouble",
+		keys = {
+			-- workspace diagnostics
+			{
+				"<leader>tt",
+				"<cmd>Trouble diagnostics toggle<cr>",
+				desc = "Diagnostics (Trouble)",
+			},
+			-- buffer diagnostics
+			{
+				"<leader>tb",
+				"<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+				desc = "Buffer Diagnostics (Trouble)",
+			},
+			-- symbol (outline) show list of symbols
+			{
+				"<leader>ts",
+				"<cmd>Trouble symbols toggle focus=false<cr>",
+				desc = "Symbols (Trouble)",
+			},
+			-- Lsp stuff (definitions / refs / implementations)
+			{
+				"<leader>tl",
+				"<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+				desc = "LSP Definitions / references / ... (Trouble)",
+			},
+			-- Location list
+			{
+				"<leader>to",
+				"<cmd>Trouble loclist toggle<cr>",
+				desc = "Location List (Trouble)",
+			},
+			-- quickfix list
+			{
+				"<leader>tq",
+				"<cmd>Trouble qflist toggle<cr>",
+				desc = "Quickfix List (Trouble)",
+			},
+		},
+	},
 }

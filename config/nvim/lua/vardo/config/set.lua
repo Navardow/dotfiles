@@ -1,35 +1,36 @@
+local set = vim.opt
 
-vim.opt.nu = true
-vim.opt.relativenumber = true
+set.number = true
+set.relativenumber = true
 
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.expandtab = true
+set.tabstop = 4
+set.softtabstop = 4
+set.shiftwidth = 4
+set.expandtab = true
 
-vim.opt.smartindent = true
+set.smartindent = true
 
-vim.opt.wrap = false
+set.wrap = false
 
-vim.opt.swapfile = false
-vim.opt.backup = false
-vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
-vim.opt.undofile = true
+set.swapfile = false
+set.backup = false
+set.undodir = os.getenv("HOME") .. "/.vim/undodir"
+set.undofile = true
 
-vim.opt.hlsearch = false
-vim.opt.incsearch = true
+set.hlsearch = false
+set.incsearch = true
 
-vim.opt.termguicolors = true
+set.termguicolors = true
 
-vim.opt.scrolloff = 8
-vim.opt.signcolumn = "yes"
-vim.opt.isfname:append("@-@")
+set.scrolloff = 8
+set.signcolumn = "yes"
+set.isfname:append("@-@")
 
-vim.opt.updatetime = 50
+set.updatetime = 50
 
-vim.opt.colorcolumn = "80"
+set.colorcolumn = "80"
 
-vim.opt.autoread = true
+set.autoread = true
 vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "CursorHoldI", "FocusGained" }, {
   pattern = { "*" },
   callback = function()
@@ -39,4 +40,3 @@ vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "CursorHoldI", "FocusGai
   end,
   desc = "Automatically check and reload file changes on disk"
 })
-
