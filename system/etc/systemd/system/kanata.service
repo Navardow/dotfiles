@@ -1,0 +1,12 @@
+[Unit]
+Description=Kanata keyboard remapper
+After=systemd-udevd.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/kanata -c /home/vardo/.dotfiles/config/kanata/kanata.kbd
+Restart=always
+RestartSec=1
+
+[Install]
+WantedBy=multi-user.target

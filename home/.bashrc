@@ -21,16 +21,16 @@ CLR_WHITE="\[\033[97m\]"
 FOLDER_ICON="󰉋"
 GIT_ICON=""
 ARROW_ICON="╰─❯"
-PLUS_ICON="+"   
-X_ICON="✗"      
-CHECK_ICON="✓" 
+PLUS_ICON="+"
+X_ICON="✗"
+CHECK_ICON="✓"
 TOP_ARROW="╭─"
 
 
 
 #functions
 git_state() {
-    
+
     git rev-parse --is-inside-work-tree &>/dev/null || return
 
     # staged changes
@@ -54,7 +54,7 @@ git_state() {
 # Prompt
 PS1=""
 PS1+="${CLR_WHITE}${TOP_ARROW}"
-PS1+="${CLR_GRAY} \u "
+PS1+="${CLR_GRAY} \u@\h "
 PS1+="${CLR_PURPLE}\W "
 
 PS1+="${CLR_GREEN}\$(__git_ps1 \"(${GIT_ICON}:%s)\")"

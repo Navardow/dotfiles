@@ -1,0 +1,15 @@
+(defsrc
+    esc
+    caps
+    lctl
+    lalt
+    lmet
+)
+
+(deflayer base
+    caps
+    (tap-hold-release 200 120 esc lctl)
+    `
+    lmet
+    lalt
+)

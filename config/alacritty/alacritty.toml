@@ -2,6 +2,7 @@
 import = [
     "~/.dotfiles/config/alacritty/themes/alacritty-theme/themes/dracula_plus.toml"
 ]
+
 [window]
 decorations="None"
 opacity=0.9
@@ -9,4 +10,6 @@ opacity=0.9
 [font]
 size = 14
 
-
+[colors.primary]
+background = "#000000"
+foreground = "#ffffff"

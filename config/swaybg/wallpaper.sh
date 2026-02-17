@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 # Wallpaper directory
-WP_FOLDER=/wallpaper
+WP_FOLDER=~/Pictures/wallpapers/
 
 # Time in seconds to change wallpaper
 WAIT_TIME=599
