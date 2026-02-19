@@ -8,7 +8,7 @@
 
 (deflayer base
     caps
-    (tap-hold-release 200 120 esc lctl)
+    (tap-hold-press 200 120 esc lctl)
     `
     lmet
     lalt
