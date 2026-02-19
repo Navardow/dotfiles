@@ -4,7 +4,10 @@ After=systemd-udevd.service
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/kanata -c /home/vardo/.dotfiles/config/kanata/kanata.kbd
+# laptop
+ExecStart=/usr/bin/kanata -c /home/Vardo/.dotfiles/config/kanata/kanata.kbd
+# pc
+# ExecStart=/usr/bin/kanata -c /home/vardo/.dotfiles/config/kanata/kanata.kbd
 Restart=always
 RestartSec=2
 
