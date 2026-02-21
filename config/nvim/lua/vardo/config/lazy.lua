@@ -17,5 +17,6 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
     spec = {
         { import = "vardo.plugins" },
+        { import = "vardo.plugins.lsp" }
     }
 })

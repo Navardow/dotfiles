@@ -1,9 +1,7 @@
 return function(capabilities)
-  return function()
-    require("lspconfig").astro.setup({
-      capabilities = capabilities,
-      filetypes = { "astro" },
+    vim.lsp.config("astro", {
+        cmd = { "astro-language-server" },
+        capabilities = capabilities,
+        filetypes = { "astro" },
     })
-  end
 end
-

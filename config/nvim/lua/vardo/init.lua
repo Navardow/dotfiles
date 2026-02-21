@@ -10,72 +10,72 @@ local yank_group = augroup("vardo.highlight_yank", { clear = true })
 
 -- highlights yaned text
 autocmd("TextYankPost", {
-	group = yank_group,
-	pattern = "*",
-	callback = function()
-		vim.highlight.on_yank({
-			higroup = "IncSearch",
-			timeout = 40,
-		})
-	end,
+    group = yank_group,
+    pattern = "*",
+    callback = function()
+        vim.highlight.on_yank({
+            higroup = "IncSearch",
+            timeout = 40,
+        })
+    end,
 })
 
 -- remove trailing whitespaces
 autocmd({ "BufWritePre" }, {
-	group = VardoGroup,
-	pattern = "*",
-	command = [[%s/\s\+$//e]],
+    group = VardoGroup,
+    pattern = "*",
+    command = [[%s/\s\+$//e]],
 })
 
 autocmd("LspAttach", {
-	group = VardoGroup,
-	callback = function(e)
-		local client = vim.lsp.get_client_by_id(e.data.client_id)
-		if not client then
-			return
-		end
+    group = VardoGroup,
+    callback = function(e)
+        local client = vim.lsp.get_client_by_id(e.data.client_id)
+        if not client then
+            return
+        end
 
-		local opts = { buffer = e.buf }
-		vim.keymap.set("n", "gd", function()
-			vim.lsp.buf.definition()
-		end, opts)
-		vim.keymap.set("n", "K", function()
-			vim.lsp.buf.hover()
-		end, opts)
-		vim.keymap.set("n", "<leader>vws", function()
-			vim.lsp.buf.workspace_symbol()
-		end, opts)
-		vim.keymap.set("n", "<leader>vd", function()
-			vim.diagnostic.open_float()
-		end, opts)
-		vim.keymap.set("n", "<leader>vca", function()
-			vim.lsp.buf.code_action()
-		end, opts)
-		vim.keymap.set("n", "<leader>vrr", function()
-			vim.lsp.buf.references()
-		end, opts)
-		vim.keymap.set("n", "<leader>vrn", function()
-			vim.lsp.buf.rename()
-		end, opts)
-		vim.keymap.set("i", "<C-h>", function()
-			vim.lsp.buf.signature_help()
-		end, opts)
-		vim.keymap.set("n", "[d", function()
-			vim.diagnostic.goto_next()
-		end, opts)
-		vim.keymap.set("n", "]d", function()
-			vim.diagnostic.goto_prev()
-		end, opts)
+        local opts = { buffer = e.buf }
+        vim.keymap.set("n", "gd", function()
+            vim.lsp.buf.definition()
+        end, opts)
+        vim.keymap.set("n", "K", function()
+            vim.lsp.buf.hover()
+        end, opts)
+        vim.keymap.set("n", "<leader>vws", function()
+            vim.lsp.buf.workspace_symbol()
+        end, opts)
+        vim.keymap.set("n", "<leader>vd", function()
+            vim.diagnostic.open_float()
+        end, opts)
+        vim.keymap.set("n", "<leader>vca", function()
+            vim.lsp.buf.code_action()
+        end, opts)
+        vim.keymap.set("n", "<leader>vrr", function()
+            vim.lsp.buf.references()
+        end, opts)
+        vim.keymap.set("n", "<leader>vrn", function()
+            vim.lsp.buf.rename()
+        end, opts)
+        vim.keymap.set("i", "<C-h>", function()
+            vim.lsp.buf.signature_help()
+        end, opts)
+        vim.keymap.set("n", "[d", function()
+            vim.diagnostic.goto_next()
+        end, opts)
+        vim.keymap.set("n", "]d", function()
+            vim.diagnostic.goto_prev()
+        end, opts)
 
-		if client.name == "clangd" then
-			vim.keymap.set(
-				"n",
-				"<leader>ch",
-				"<cmd>LspClangdSwitchSourceHeader<cr>",
-				{ buffer = e.buf, desc = "Switch Source/Header (C/C++)" }
-			)
-		end
-	end,
+        if client.name == "clangd" then
+            vim.keymap.set(
+                "n",
+                "<leader>ch",
+                "<cmd>LspClangdSwitchSourceHeader<cr>",
+                { buffer = e.buf, desc = "Switch Source/Header (C/C++)" }
+            )
+        end
+    end,
 })
 
 -- netrw config
