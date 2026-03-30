@@ -1,22 +1,17 @@
-#battery {
-}
-
-#battery .icon {
-}
 
 #battery.charging {
     color: green;
+    background-color: black;
 }
 
 @keyframes blink {
     to {
-        background-color: #ffffff;
-        color: black;
+        color: red;
     }
 }
 
 #battery.warning:not(.charging) {
-    color: white;
+    background-color: black;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: linear;

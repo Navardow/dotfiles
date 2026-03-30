@@ -1,5 +1,5 @@
-{ 
+{
     "cpu": {
-        "format": "{avg_frequency} "
+        "format": " {avg_frequency}"
     }
 }

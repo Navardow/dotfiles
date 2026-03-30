@@ -41,7 +41,16 @@ return {
         end,
     },
 
-    -- Apply default theme once everything is ready
+    {
+        "t184256/vim-boring",
+        lazy = false,
+        priority = 1000,
+        dependencies = {
+            "rktjmp/lush.nvim",
+        },
+    },
+
+
     {
         "nvim-lua/plenary.nvim",
         lazy = false,
@@ -51,4 +60,3 @@ return {
         end,
     },
 }
-

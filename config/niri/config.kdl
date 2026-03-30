@@ -72,19 +72,19 @@ input {
 }
 
 
-workspace "Code " {}
+workspace "" {}
 
-workspace "Browse " {
+workspace "" {
     open-on-output "DP-1"
 }
 
-workspace "work " {}
+workspace "" {}
 
-workspace "Music "{
+workspace ""{
     open-on-output "DP-1"
 }
 
-workspace "Planner " {
+workspace "" {
     open-on-output "DP-1"
 }
 
@@ -226,7 +226,7 @@ layout {
         // - CSS-like notation: "rgb(255, 127, 0)", rgba(), hsl() and a few others.
 
         // Color of the ring on the active monitor.
-        active-color "#bd93f9ff"
+        active-color "#696969"
 
         // Color of the ring on inactive monitors.
         //
@@ -330,6 +330,15 @@ layout {
 spawn-at-startup "waybar"
 spawn-at-startup "mako"
 spawn-at-startup "~/.dotfiles/config/swaybg/wallpaper.sh"
+spawn-at-startup "nm-applet --indicator"
+spawn-at-startup "blueman-applet"
+
+cursor {
+    xcursor-theme "breeze_cursors"
+    hide-when-typing
+    hide-after-inactive-ms 1000
+}
+
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
 
@@ -358,7 +367,7 @@ screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 // https://yalter.github.io/niri/Configuration:-Animations
 animations {
     // Uncomment to turn off all animations.
-    // off
+    off
 
     // Slow down all animations by this factor. Values below 1 speed them up instead.
     // slowdown 0.8

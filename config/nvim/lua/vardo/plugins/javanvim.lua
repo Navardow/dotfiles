@@ -22,7 +22,7 @@ return {
 
                 jdk = {
                     auto_install = true,
-                    version = '17',
+                    version = '25',
                 },
 
                 -- Logging

@@ -51,13 +51,14 @@ git_state() {
     fi
 }
 
+
 # Prompt
 PS1=""
 PS1+="${CLR_WHITE}${TOP_ARROW}"
 PS1+="${CLR_GRAY} \u@\h "
-PS1+="${CLR_PURPLE}\W "
+PS1+="${CLR_WHITE}\W "
 
-PS1+="${CLR_GREEN}\$(__git_ps1 \"(${GIT_ICON}:%s)\")"
+PS1+="${CLR_WHITE}\$(__git_ps1 \"(${GIT_ICON}:%s)\")"
 
 PS1+="\$( \
   state=\$(git_state); \
@@ -75,7 +76,7 @@ alias update='sudo pacman -Syu --color=auto'
 alias grep='grep --color=auto'
 alias si='sudo pacman -S --color=auto'
 alias bashrc='nvim ~/.bashrc'
-alias dot='nvim ~/dotfiles'
+alias dot='nvim ~/.dotfiles'
 
 #ls aliases
 alias ls='ls --color=auto'
@@ -109,9 +110,9 @@ alias unstow='stow -D'
 #power control
 alias gts='systemctl sleep'
 
-
 #xdg-open command
 alias open='xdg-open'
+
 
 export PATH="/usr/local/bin:$PATH"
 
