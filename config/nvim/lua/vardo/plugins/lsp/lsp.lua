@@ -56,8 +56,11 @@ return {
                 ["clangd"] = function()
                     require("vardo.plugins.lsp.servers.clangd")(capabilities)
                     vim.lsp.enable("clangd")
+                end,
+                ["basedpyright"] = function()
+                    require("vardo.plugins.lsp.servers.basedpyright")(capabilities)
+                    vim.lsp.enable("basedpyright")
                 end
-
             }
         })
 
