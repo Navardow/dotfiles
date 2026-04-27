@@ -115,10 +115,9 @@ alias open='xdg-open'
 
 
 export PATH="/usr/local/bin:$PATH"
-
-
-
-
-
 # Turso
 export PATH="$PATH:/home/Vardo/.turso"
+#python
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+
