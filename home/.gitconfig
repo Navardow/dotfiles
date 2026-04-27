@@ -1,7 +1,6 @@
 [user]
 	name = NavardoW
     email = navardowilliamsrei@gmail.com
-
 [alias]
     ci = commit
     cm = commit -m
@@ -13,7 +12,6 @@
     s = status
     delb = branch -d
     delob = push origin --delete #when remote name is origin
-
 [init]
 	defaultBranch = main
 [core]
