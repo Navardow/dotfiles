@@ -114,6 +114,8 @@ alias gts='systemctl sleep'
 alias open='xdg-open'
 
 
+export XCURSOR_THEME=Breeze
+
 export PATH="/usr/local/bin:$PATH"
 export PATH="$HOME/.local/share/bob/nvim-bin:$PATH"
 
