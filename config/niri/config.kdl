@@ -334,9 +334,9 @@ spawn-at-startup "nm-applet --indicator"
 spawn-at-startup "blueman-applet"
 
 cursor {
-    xcursor-theme "breeze_cursors"
-    hide-when-typing
-    hide-after-inactive-ms 1000
+    //xcursor-theme "breeze_cursors"
+    //hide-when-typing
+    //hide-after-inactive-ms 1000
 }
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
