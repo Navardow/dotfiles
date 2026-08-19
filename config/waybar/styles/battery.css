@@ -1,7 +1,6 @@
-
 #battery.charging {
     color: green;
-    background-color: black;
+    background-color: transparent;
 }
 
 @keyframes blink {

@@ -8,7 +8,7 @@
 
 window#waybar {
     background: rgba(0, 0, 0, 0.5);
-    color: grey;
+    color: rgb(220, 220, 220);
 }
 
 #window {
@@ -16,8 +16,15 @@ window#waybar {
     font-family: "Ubuntu";
 }
 
-#clock, #battery, #cpu, #memory, #network, #pulseaudio, #custom-spotify, #tray, #mode {
+#clock,
+#battery,
+#cpu,
+#memory,
+#network,
+#pulseaudio,
+#custom-spotify,
+#tray,
+#mode {
     padding: 0 5px;
     margin: 0 5px;
 }
-

@@ -2,17 +2,15 @@
     padding: 0 5px;
 }
 
-
 #workspaces button {
     padding: 0 5px;
-    margin : 0 5px;
+    margin: 0 5px;
     background: transparent;
     color: gray;
-    border-top: 2px solid transparent;
+    border-top: 1px solid transparent;
 }
 
 #workspaces button.focused {
     color: white;
     border-top: 2px solid white;
 }
-

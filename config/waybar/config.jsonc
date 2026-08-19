@@ -8,7 +8,7 @@
         "~/.dotfiles/config/waybar/modules/memory.jsonc",
         "~/.dotfiles/config/waybar/modules/clock.jsonc",
         "~/.dotfiles/config/waybar/modules/bluetooth.jsonc",
-        "~/.dotfiles/config/waybar/modules/temperature.jsonc",
+        "~/.dotfiles/config/waybar/modules/temperature.jsonc"
     ],
 
     "layer": "top", // Waybar at top layer
@@ -18,11 +18,10 @@
     "modules-center": ["clock"],
     "modules-right": [
         "tray",
-        "pulseaudio",
         "cpu",
         "memory",
         "temperature",
-        "battery",
+        "battery"
     ],
     "niri/workspaces": {
         "disable-scroll": true,

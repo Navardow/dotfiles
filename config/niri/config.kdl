@@ -71,7 +71,11 @@ input {
     // focus-follows-mouse max-scroll-amount="0%"
 }
 
-
+cursor {
+    xcursor-theme "breeze_cursors"
+    hide-when-typing
+    hide-after-inactive-ms 1000
+}
 workspace "" {}
 
 workspace "" {
@@ -100,6 +104,7 @@ output "eDP-1" {
     scale 1
     transform "normal"
     position x=0 y=0
+    backdrop-color "#000000"
 }
 
 output "DP-2" {
@@ -172,6 +177,8 @@ layout {
     // Set gaps around windows in logical pixels.
     gaps 8
 
+
+    background-color "transparent"
     // When to center a column when changing focus, options are:
     // - "never", default behavior, focusing an off-screen column will keep at the left
     //   or right edge of the screen.
@@ -327,17 +334,13 @@ layout {
 // See the binds section below for more spawn examples.
 
 // This line starts waybar, a commonly used bar for Wayland compositors.
+spawn-sh-at-startup "waypaper --restore"
 spawn-at-startup "waybar"
 spawn-at-startup "mako"
-spawn-at-startup "~/.dotfiles/config/swaybg/wallpaper.sh"
 spawn-at-startup "nm-applet --indicator"
 spawn-at-startup "blueman-applet"
+spawn-at-startup "volctl"
 
-cursor {
-    //xcursor-theme "breeze_cursors"
-    //hide-when-typing
-    //hide-after-inactive-ms 1000
-}
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
@@ -352,7 +355,7 @@ hotkey-overlay {
 // Additionally, clients will be informed that they are tiled, removing some client-side rounded corners.
 // This option will also fix border/focus ring drawing behind some semitransparent windows.
 // After enabling or disabling this, you need to restart the apps for this to take effect.
-// prefer-no-csd
+prefer-no-csd
 
 // You can change the path where screenshots are saved.
 // A ~ at the front will be expanded to the home directory.
@@ -390,7 +393,7 @@ window-rule {
 
 // remove drawing background
 window-rule {
-	draw-border-with-background false
+	draw-border-with-background false 
 }
 
 // Open the Firefox picture-in-picture player as floating by default.
@@ -401,6 +404,11 @@ window-rule {
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
     open-floating true
 }
+
+layer-rule {
+    place-within-backdrop true
+}
+
 
 // Example: block out two password managers from screen capture.
 // (This example rule is commented out with a "/-" in front.)
@@ -442,6 +450,7 @@ binds {
     Mod+T hotkey-overlay-title="Open a Terminal: alacritty" { spawn "alacritty"; }
     Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
+    Mod+P hotkey-overlay-title="Run an Application: waypaper" { spawn "waypaper"; }
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument. It's passed verbatim to `sh -c`.

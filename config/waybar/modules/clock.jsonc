@@ -1,5 +1,18 @@
 {
     "clock": {
-        "format-alt": "{:%Y-%m-%d}"
+        "format": "{:%H:%M}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "calendar": {
+            "mode": "month",
+            "weeks-pos": "right",
+            "on-scroll": 1,
+            "format": {
+                "months": "<span color='#ffffff'><b>{}</b></span>",
+                "days": "<span color='#ffffff'>{}</span>",
+                "weeks": "<span color='#ffffff'><b>W{}</b></span>",
+                "weekdays": "<span color='#ffffff'><b>{}</b></span>",
+                "today": "<span color='#d65d0e'><b><u>{}</u></b></span>"
+            }
+        }
     }
 }

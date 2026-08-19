@@ -5,6 +5,9 @@
 
 #tray* {
     margin-left: 5px;
-    background-color: transparent;
     color: gray;
+}
+
+#tray menu {
+    background-color: black;
 }

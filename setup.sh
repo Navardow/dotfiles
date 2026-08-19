@@ -12,7 +12,7 @@ if [[ $? -ne 0 ]]; then
 fi
 
 declare -a packages
-packages=("niri" "alacritty" "fuzzel" "mako" "swaybg" "swaylock" "waybar" "interception-caps2esc")
+packages=("niri" "alacritty" "fuzzel" "mako" "swaybg" "swaylock" "waybar" "interception-caps2esc" "volctl")
 
 for package in "${packages[@]}"; do
     echo "Installing ${package}..."

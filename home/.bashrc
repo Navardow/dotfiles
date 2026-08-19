@@ -125,3 +125,5 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 
 # Turso
 export PATH="$PATH:$HOME/.turso"
+
+export PATH="$HOME/.local/bin:$PATH"
