@@ -11,4 +11,5 @@ checkout: https://www.vardowill.com/projects/dotfiles
 
 - [ ] Fix/correct setup script.
 - [ ] Customize volctl slider.
+- [ ] create package list
 - [ ] Clean up. (general i know, but removing pointless code in my opinion is a task.)
