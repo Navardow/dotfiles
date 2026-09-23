@@ -17,4 +17,7 @@
 [core]
 	editor = nvim
 [remote "origin"]
-	prune = true
+    prune = true
+[url "git@github.com:"]
+    InsteadOf = https://github.com/
+
