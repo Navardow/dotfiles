@@ -340,6 +340,7 @@ spawn-at-startup "mako"
 spawn-at-startup "nm-applet --indicator"
 spawn-at-startup "blueman-applet"
 spawn-at-startup "volctl"
+spawn-at-startup "swayidle" "-w" "timeout" "300" "swaylock -f -c 000000" "timeout" "900" "systemctl suspend-then-hibernate" "before-sleep" "swaylock -f -c 000000"
 
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:

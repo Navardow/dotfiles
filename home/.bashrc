@@ -113,6 +113,8 @@ alias gts='systemctl sleep'
 #xdg-open command
 alias open='xdg-open'
 
+alias updatesub="git submodule foreach git pull origin main"
+
 
 export XCURSOR_THEME=Breeze
 
@@ -127,3 +129,4 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 export PATH="$PATH:$HOME/.turso"
 
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/development/flutter/bin:$PATH"
