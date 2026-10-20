@@ -39,8 +39,9 @@ packages=(
     # desktop portals, as niri's niri-portals.conf expects: gnome (screen sharing, screenshots),
     # gtk (file pickers, notifications); gnome-keyring above backs the Secret portal
     xdg-desktop-portal-gnome xdg-desktop-portal-gtk
-    # shell, tools, dotfile linking (git talks to github over ssh, see home/.gitconfig)
-    tmux git openssh stow bob
+    # shell, tools, dotfile linking (git talks to github over ssh, see home/.gitconfig);
+    # jq for the claude code hook (home/.claude/hooks/block-shell-writes.sh)
+    tmux git openssh stow bob jq
     # neovim (config/nvim): plugin builds (telescope-fzf-native, blink.cmp, treesitter) and search
     base-devel rust ripgrep fd tree-sitter-cli
     # neovim LSPs and formatters (config/nvim/lua/lsp, plugins/conform.lua)
@@ -136,8 +137,9 @@ git -C "$DOTFILES" update-index --skip-worktree config/waypaper/config.ini 2>> "
 
 #stow (-R restows, so this also picks up config dirs added since the last run).
 #gtk dirs are created first so only settings.ini gets linked; otherwise stow links the whole dir
-#and whatever GTK apps write there (bookmarks etc.) would land in the repo
-mkdir -p "$HOME/.config/gtk-3.0" "$HOME/.config/gtk-4.0"
+#and whatever GTK apps write there (bookmarks etc.) would land in the repo.
+#same for ~/.claude: only the config files should be linked, not sessions/credentials
+mkdir -p "$HOME/.config/gtk-3.0" "$HOME/.config/gtk-4.0" "$HOME/.claude/hooks"
 if stow -R config -d "$DOTFILES" -t "$HOME/.config" 2>> "$log_file"; then
     echo "$HOME/.config symlinks created"
 else

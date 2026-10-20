@@ -35,7 +35,7 @@ The clone must live at `~/.dotfiles`; a few configs reference that path.
 | Path | What |
 | --- | --- |
 | `config/` | stowed into `~/.config` |
-| `home/` | stowed into `~` (`.bashrc`, `.gitconfig`, `.tmux.conf`, `.clang-format`) |
+| `home/` | stowed into `~` (`.bashrc`, `.gitconfig`, `.tmux.conf`, `.clang-format`, `.claude/`) |
 | `system/etc/` | copied into `/etc` by `setup.sh` (ly, caps2esc) |
 | `setup.sh` | package list and system setup; kept in sync with the configs |
 
@@ -51,6 +51,7 @@ The clone must live at `~/.dotfiles`; a few configs reference that path.
 | **lock screen** | hyprlock over the current wallpaper; the password box only appears while typing (swaylock as a fallback) |
 | **wallpaper** | waypaper + swaybg, restored at login straight through swaybg |
 | **other** | alacritty, tmux, mako, GTK settings (Adwaita, Papirus-Dark icons), neovim (submodule, via bob) |
+| **claude code** | global rules (`CLAUDE.md`) and `settings.json`. In every mode: never commits or stages (`git add`/`commit`/`stage`/`rm`/`mv` denied) and file edits (`Edit`/`Write`) ask first. Manual mode (the default): read-only commands (`ls`, `cat`, `grep`, `git status`/`diff`/`log`, ...) run without asking, everything else asks, and a hook (`hooks/block-shell-writes.sh`) also asks before commands that write files or hide other commands (`>`, `sed -i`, `tee`, `$(...)`, ...). Auto mode: the hook is skipped, so shell commands follow auto mode's normal rules |
 
 ### Bar clicks
 
@@ -86,5 +87,16 @@ The clone must live at `~/.dotfiles`; a few configs reference that path.
   blank window on Wayland + NVIDIA; may not be needed on other setups.
 - The temperature module reads the AMD `k10temp` sensor and falls back to Intel `coretemp` (first path
   that exists wins).
+- Only `settings.json`, `CLAUDE.md` and the hook are linked into `~/.claude`; the rest of it (sessions,
+  credentials) stays out of the repo, which is why `setup.sh` creates `~/.claude/hooks` before stowing.
+  Claude Code can replace `~/.claude/settings.json` with a real file when it saves settings (e.g. `/config`);
+  if `ls -l ~/.claude/settings.json` no longer points into `~/.dotfiles`, move it back over
+  `home/.claude/settings.json` and re-run `stow -R home -d ~/.dotfiles -t ~`.
+- The Claude Code hook needs `jq` (installed by `setup.sh`). Without it the hook can't read the command
+  and lets everything through silently, so in manual mode shell writes (`>`, `sed -i`, `tee`, ...) stop
+  asking; the `deny`/`ask` rules in `settings.json` still apply.
+- If a safe, read-only command keeps prompting in Claude Code, add it to `permissions.allow` in
+  `home/.claude/settings.json`. Leave out commands that can write or run other commands (`find`, `sed`,
+  `awk`, `sort`, `env`, `xargs`); those should keep asking.
 - After pulling on another machine, re-run `setup.sh`. It's safe to re-run and picks up new packages, new
   config folders (stow) and the settings above.
