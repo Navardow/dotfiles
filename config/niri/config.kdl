@@ -88,7 +88,7 @@ workspace ""{
     open-on-output "DP-1"
 }
 
-workspace "" {
+workspace "" {
     open-on-output "DP-1"
 }
 
@@ -108,6 +108,8 @@ output "eDP-1" {
 }
 
 output "DP-2" {
+    // black (not niri's grey) for the moment before the wallpaper is drawn at login
+    backdrop-color "#000000"
     // Uncomment this line to disable this output.
     // off
 
@@ -140,6 +142,8 @@ output "DP-2" {
 }
 
 output "DP-1" {
+    // black (not niri's grey) for the moment before the wallpaper is drawn at login
+    backdrop-color "#000000"
     // Uncomment this line to disable this output.
     // off
 
@@ -334,13 +338,14 @@ layout {
 // See the binds section below for more spawn examples.
 
 // This line starts waybar, a commonly used bar for Wayland compositors.
-spawn-sh-at-startup "waypaper --restore"
+// wallpaper first, and straight through swaybg: `waypaper --restore` takes about a second longer
+spawn-sh-at-startup "~/.config/waypaper/wallpaper.sh --set"
 spawn-at-startup "waybar"
 spawn-at-startup "mako"
-spawn-at-startup "nm-applet --indicator"
 spawn-at-startup "blueman-applet"
-spawn-at-startup "volctl"
-spawn-at-startup "swayidle" "-w" "timeout" "300" "swaylock -f -c 000000" "timeout" "900" "systemctl suspend-then-hibernate" "before-sleep" "swaylock -f -c 000000"
+spawn-sh-at-startup "python3 ~/.dotfiles/config/waybar/scripts/volume-popup.py"
+spawn-sh-at-startup "python3 ~/.dotfiles/config/waybar/scripts/spotify-popup.py"
+spawn-at-startup "swayidle" "-w" "timeout" "300" "~/.config/hypr/lock.sh -f" "timeout" "900" "systemctl suspend-then-hibernate || systemctl suspend" "before-sleep" "~/.config/hypr/lock.sh -f"
 
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
@@ -406,6 +411,50 @@ window-rule {
     open-floating true
 }
 
+// terminals open on the code workspace. exact app-id, so the floating htop/sensors/nmtui
+// windows from waybar (app-id sysmon-*) still open where you are
+window-rule {
+    match app-id="^Alacritty$"
+    open-on-workspace ""
+}
+
+// spotify opens on the music workspace
+window-rule {
+    match app-id="^spotify$"
+    open-fullscreen true
+    open-on-workspace ""
+}
+
+// firefox always opens on its own workspace (picture-in-picture stays where you are)
+window-rule {
+    match app-id=r#"firefox$"#
+    exclude title="^Picture-in-Picture$"
+    open-on-workspace ""
+}
+
+// discord opens fullscreen on its own workspace on DP-1
+window-rule {
+    match app-id="^discord$"
+    open-fullscreen true
+    open-on-workspace ""
+}
+
+// waypaper (Mod+P) pops up as a floating window; niri centers new floating windows
+window-rule {
+    match app-id="^waypaper$"
+    open-floating true
+    default-column-width { fixed 820; }
+    default-window-height { fixed 600; }
+}
+
+// htop / sensors windows opened from the waybar stats modules
+window-rule {
+    match app-id="^sysmon-"
+    open-floating true
+    default-column-width { fixed 800; }
+    default-window-height { fixed 450; }
+}
+
 layer-rule {
     place-within-backdrop true
 }
@@ -450,7 +499,7 @@ binds {
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+T hotkey-overlay-title="Open a Terminal: alacritty" { spawn "alacritty"; }
     Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
-    Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
+    Super+Alt+L hotkey-overlay-title="Lock the Screen: hyprlock" { spawn-sh "~/.config/hypr/lock.sh"; }
     Mod+P hotkey-overlay-title="Run an Application: waypaper" { spawn "waypaper"; }
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.

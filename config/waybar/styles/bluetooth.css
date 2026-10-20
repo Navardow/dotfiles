@@ -1,0 +1,15 @@
+/* sits inside the #traybox (tray.css) */
+#bluetooth {
+    margin: 0 0 0 10px;
+    padding: 0;
+    color: #aaaaaa;
+}
+
+#bluetooth.connected {
+    color: #ffffff;
+}
+
+#bluetooth.off,
+#bluetooth.disabled {
+    color: #555555;
+}

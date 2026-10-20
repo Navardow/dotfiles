@@ -1,5 +1,15 @@
 {
     "cpu": {
-        "format": " {avg_frequency}"
+        "interval": 2,
+        // icons next to text get rise='-3072' (4px lower) so they center on the numbers
+        "format": "<span font='Material Symbols Rounded 12 @FILL=1,wght=500' rise='-3072'>memory</span> {usage}%",
+        "format-alt": "<span font='Material Symbols Rounded 12 @FILL=1,wght=500' rise='-3072'>memory</span> {usage}% · {avg_frequency}GHz",
+        "format-alt-click": "click-right",
+        "tooltip-format": "Load: {load1} / {load5} / {load15}\nAvg {avg_frequency} GHz · Max {max_frequency} GHz",
+        "states": {
+            "warning": 70,
+            "critical": 90
+        },
+        "on-click": "~/.dotfiles/config/waybar/scripts/sysmon.sh cpu"
     }
 }

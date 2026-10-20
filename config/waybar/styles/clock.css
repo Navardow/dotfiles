@@ -1,11 +1,11 @@
 #clock {
-    color: #ffffff;
+    margin: 3px 5px;
     padding: 0 12px;
-    font-weight: 500;
-}
-
-#clock:hover {
     color: #ffffff;
+    font-weight: 500;
+    background-color: #1a1a1a;
+    border: 1px solid #3a3a3a;
+    border-radius: 10px;
 }
 
 tooltip {

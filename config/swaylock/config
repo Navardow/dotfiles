@@ -1,3 +1,46 @@
-image=$HOME/Pictures/wallpapers/thorfin.png
+# black/white theme matching waybar, mako and fuzzel.
+# fallback locker: hypr/lock.sh uses it (with the wallpaper as --image) when hyprlock is missing
+color=000000
+scaling=fill
 show-failed-attempts
-ring-color=#000000
+ignore-empty-password
+indicator-caps-lock
+hide-keyboard-layout
+
+font=Ubuntu Nerd Font
+indicator-radius=90
+indicator-thickness=6
+
+# idle: dark grey ring like the bar's box outlines
+inside-color=000000aa
+ring-color=3a3a3a
+line-color=00000000
+separator-color=00000000
+text-color=ffffff
+# typing / backspace highlights
+key-hl-color=ffffff
+bs-hl-color=aaaaaa
+
+# checking the password
+inside-ver-color=000000aa
+ring-ver-color=ffffff
+line-ver-color=00000000
+text-ver-color=ffffff
+
+# wrong password
+inside-wrong-color=000000aa
+ring-wrong-color=ff0000
+line-wrong-color=00000000
+text-wrong-color=ff0000
+
+# input cleared
+inside-clear-color=000000aa
+ring-clear-color=aaaaaa
+line-clear-color=00000000
+text-clear-color=aaaaaa
+
+# caps lock on
+inside-caps-lock-color=000000aa
+ring-caps-lock-color=ffffff
+line-caps-lock-color=00000000
+text-caps-lock-color=ffffff

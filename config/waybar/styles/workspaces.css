@@ -1,5 +1,9 @@
 #workspaces {
+    margin: 3px 5px;
     padding: 0 5px;
+    background-color: #1a1a1a;
+    border: 1px solid #3a3a3a;
+    border-radius: 10px;
 }
 
 #workspaces button {
@@ -7,10 +11,38 @@
     margin: 0 5px;
     background: transparent;
     color: gray;
-    border-top: 1px solid transparent;
 }
 
 #workspaces button.focused {
     color: white;
-    border-top: 2px solid white;
+}
+
+/* only show named workspaces: niri's extra (unnamed) workspaces get numeric ids
+   (#niri-workspace-<index>) while named ones are called after their name, so collapse the numeric
+   ones. waybar 0.15 has no option for this ("display-condition" is newer) and GTK CSS can't remove
+   a widget, so they're shrunk to nothing; their label is already empty ("format": "{name}"). */
+#workspaces button#niri-workspace-1,
+#workspaces button#niri-workspace-2,
+#workspaces button#niri-workspace-3,
+#workspaces button#niri-workspace-4,
+#workspaces button#niri-workspace-5,
+#workspaces button#niri-workspace-6,
+#workspaces button#niri-workspace-7,
+#workspaces button#niri-workspace-8,
+#workspaces button#niri-workspace-9,
+#workspaces button#niri-workspace-10,
+#workspaces button#niri-workspace-11,
+#workspaces button#niri-workspace-12,
+#workspaces button#niri-workspace-13,
+#workspaces button#niri-workspace-14,
+#workspaces button#niri-workspace-15,
+#workspaces button#niri-workspace-16,
+#workspaces button#niri-workspace-17,
+#workspaces button#niri-workspace-18,
+#workspaces button#niri-workspace-19,
+#workspaces button#niri-workspace-20 {
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    border: none;
 }

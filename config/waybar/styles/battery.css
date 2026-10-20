@@ -1,16 +1,31 @@
-#battery.charging {
-    color: green;
-    background-color: transparent;
+#battery {
+    margin: 3px 5px;
+    padding: 0 10px;
+    color: #aaaaaa;
+    background-color: #1a1a1a;
+    border: 1px solid #3a3a3a;
+    border-radius: 10px;
 }
 
+#battery.charging,
+#battery.plugged,
+#battery.full {
+    color: #ffffff;
+}
+
+#battery.warning:not(.charging) {
+    color: #ffffff;
+}
+
+/* also used by #temperature.critical in stats.css */
 @keyframes blink {
     to {
         color: red;
     }
 }
 
-#battery.warning:not(.charging) {
-    background-color: black;
+#battery.critical:not(.charging) {
+    color: red;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: linear;

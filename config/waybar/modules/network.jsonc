@@ -1,9 +1,25 @@
 {
     "network": {
-        // "interface": "wlp2s0", // (Optional) To force the use of this interface
-        "format-wifi": "",
-        "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
-        "format-disconnected": "Disconnected ⚠"
-    },
-    "on-click": ""
+        "interval": 5,
+        // icon only in the tray box; details are in the tooltip.
+        // icons are Material Symbols Rounded ligatures (filled, weight 500), 12pt (16px) like the tray icons
+        "format-wifi": "{icon}",
+        "format-ethernet": "<span font='Material Symbols Rounded 12 @FILL=1,wght=500'>lan</span>",
+        "format-disconnected": "<span font='Material Symbols Rounded 12 @FILL=1,wght=500'>signal_wifi_off</span>",
+        "format-icons": [
+            "<span font='Material Symbols Rounded 12 @FILL=1,wght=500'>signal_wifi_0_bar</span>",
+            "<span font='Material Symbols Rounded 12 @FILL=1,wght=500'>network_wifi_1_bar</span>",
+            "<span font='Material Symbols Rounded 12 @FILL=1,wght=500'>network_wifi_2_bar</span>",
+            "<span font='Material Symbols Rounded 12 @FILL=1,wght=500'>network_wifi_3_bar</span>",
+            "<span font='Material Symbols Rounded 12 @FILL=1,wght=500'>signal_wifi_4_bar</span>"
+        ],
+        // right-click toggles live download/upload speed (icons lowered to center on the text)
+        "format-alt": "<span font='Material Symbols Rounded 12 @FILL=1,wght=500' rise='-3072'>download</span> {bandwidthDownBytes} <span font='Material Symbols Rounded 12 @FILL=1,wght=500' rise='-3072'>upload</span> {bandwidthUpBytes}",
+        "format-alt-click": "click-right",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%)\n{ipaddr}/{cidr} on {ifname}\n{frequency} GHz",
+        "tooltip-format-ethernet": "Wired\n{ipaddr}/{cidr} on {ifname}",
+        "tooltip-format-disconnected": "Disconnected",
+        // fuzzel wifi picker; nmtui in a floating window if networkmanager-dmenu isn't installed
+        "on-click": "if command -v networkmanager_dmenu >/dev/null; then networkmanager_dmenu; else alacritty --class sysmon-net -e nmtui; fi"
+    }
 }

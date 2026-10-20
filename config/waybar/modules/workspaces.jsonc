@@ -2,6 +2,8 @@
     "niri/workspaces": {
         "disable-scroll": true,
         "all-outputs": false,
-        "format": "{icon}"
+        // named workspaces show their name (an icon); unnamed ones get an empty label, and
+        // styles/workspaces.css collapses their buttons
+        "format": "{name}"
     }
 }

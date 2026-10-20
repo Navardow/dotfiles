@@ -2,9 +2,10 @@
 @import "styles/battery.css";
 @import "styles/bluetooth.css";
 @import "styles/clock.css";
-@import "styles/cpu.css";
+@import "styles/mpris.css";
 @import "styles/network.css";
-@import "styles/temperature.css";
+@import "styles/pulseaudio.css";
+@import "styles/stats.css";
 @import "styles/tray.css";
 @import "styles/workspaces.css";
 

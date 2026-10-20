@@ -1,21 +1,17 @@
-
 {
     "pulseaudio": {
-        //"scroll-step": 1,
+        // icons are Material Symbols Rounded ligatures (filled, weight 500), 13pt: the volume glyphs draw
+        // narrower than the others, so they are one size up
         "format": "{icon}",
-        "format-bluetooth": "{icon}",
-        "format-muted": "",
+        "format-bluetooth": "{icon}",
+        "format-muted": "<span font='Material Symbols Rounded 13 @FILL=1,wght=500'>volume_off</span>",
         "format-icons": {
-            /*"headphones": "",
-            "handsfree": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", ""]*/
+            "default": ["<span font='Material Symbols Rounded 13 @FILL=1,wght=500'>volume_mute</span>", "<span font='Material Symbols Rounded 13 @FILL=1,wght=500'>volume_down</span>", "<span font='Material Symbols Rounded 13 @FILL=1,wght=500'>volume_up</span>"]
         },
-        "scroll-step": "5",
-        "on-click": "pavucontrol"
+        "tooltip-format": "{volume}%",
+        "scroll-step": 5,
+        "on-click": "python3 ~/.dotfiles/config/waybar/scripts/volume-popup.py toggle",
+        "on-click-middle": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "on-click-right": "pavucontrol"
     }
-
 }

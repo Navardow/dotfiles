@@ -2,14 +2,89 @@
 
 ## Overview
 
-_Dotfiles for my computers(pc and laptop, or any other computers I may aquire in the future)._
+_Dotfiles for my computers (pc and laptop, or any other computers I may acquire in the future)._
 _Configuration subjected to frequent updates and changes, Documentation may not accurately reflect configuration files._
 
 checkout: https://www.vardowill.com/projects/dotfiles
 
-## To-Do
+Arch Linux + [niri](https://github.com/YaLTeR/niri) (scrolling Wayland compositor), themed black/white
+throughout: black backgrounds, white text, `#1a1a1a` boxes with a 1px `#3a3a3a` outline and 10px corners,
+and [Material Symbols Rounded](https://fonts.google.com/icons) for every bar icon.
 
-- [ ] Fix/correct setup script.
-- [ ] Customize volctl slider.
-- [ ] create package list
-- [ ] Clean up. (general i know, but removing pointless code in my opinion is a task.)
+## Install
+
+```sh
+git clone --recurse-submodules git@github.com:NavardoW/dotfiles.git ~/.dotfiles
+~/.dotfiles/setup.sh
+```
+
+Run `setup.sh` as your normal user (it uses sudo where needed), then reboot. It:
+
+- installs every package the configs use (official repos, then AUR packages through `yay`, installing
+  `yay` first if needed); already-installed packages are skipped, so it's safe to re-run
+- fetches the `config/nvim` submodule
+- links `config/` into `~/.config` and `home/` into `~` with [GNU stow](https://www.gnu.org/software/stow/)
+- enables NetworkManager and bluetooth, hides blueman's tray icon (bluetooth is a waybar module)
+- sets up ly as the login manager and caps lock → escape (`system/etc/`)
+- prints the few tools that aren't packaged anywhere (basedpyright, kotlin-lsp) to install by hand
+
+The clone must live at `~/.dotfiles`; a few configs reference that path.
+
+## Layout
+
+| Path | What |
+| --- | --- |
+| `config/` | stowed into `~/.config` |
+| `home/` | stowed into `~` (`.bashrc`, `.gitconfig`, `.tmux.conf`, `.clang-format`) |
+| `system/etc/` | copied into `/etc` by `setup.sh` (ly, caps2esc) |
+| `setup.sh` | package list and system setup; kept in sync with the configs |
+
+## What's in it
+
+| | |
+| --- | --- |
+| **niri** | named workspaces per monitor; Firefox, Discord (fullscreen), Spotify and terminals open on their own workspace; floating waypaper and monitor windows |
+| **waybar** | workspaces · clock (calendar on hover) + Spotify · tray box (app icons, notifications, bluetooth, wifi, volume) · stats box (cpu, memory, temperature) · battery |
+| **popups** | volume slider and Spotify player (album art, seek bar, controls) dropping down from the bar (`config/waybar/scripts/`) |
+| **notifications** | mako, with a notification center in the bar (history list, do-not-disturb) |
+| **launchers / menus** | fuzzel for apps, wifi (networkmanager-dmenu), bluetooth and the notification list |
+| **lock screen** | hyprlock over the current wallpaper; the password box only appears while typing (swaylock as a fallback) |
+| **wallpaper** | waypaper + swaybg, restored at login straight through swaybg |
+| **other** | alacritty, tmux, mako, GTK settings (Adwaita, Papirus-Dark icons), neovim (submodule, via bob) |
+
+### Bar clicks
+
+| Module | Left | Right | Middle / scroll |
+| --- | --- | --- | --- |
+| clock | toggle date | month/year calendar | reset / page calendar |
+| spotify | player popup | next track | play-pause / change track |
+| notifications | history list | do not disturb | clear |
+| bluetooth | device manager | blueman menu | |
+| wifi | wifi picker | up/down speed | |
+| volume | volume popup | pavucontrol | mute / volume |
+| cpu, memory | htop | detailed view | |
+| temperature | sensors | | |
+| battery | time remaining | | |
+
+### Keys
+
+| Key | Action |
+| --- | --- |
+| `Mod+T` | terminal (alacritty) |
+| `Mod+D` | app launcher (fuzzel) |
+| `Mod+P` | wallpaper picker (waypaper) |
+| `Super+Alt+L` | lock screen |
+
+## Per-machine notes
+
+- waypaper rewrites `config/waypaper/config.ini` every time you pick a wallpaper, so `setup.sh` marks it
+  `skip-worktree` to keep that out of git. This is stored in each clone, not in the repo, so on a clone
+  where `setup.sh` hasn't run, set it by hand: `git update-index --skip-worktree config/waypaper/config.ini`.
+  To commit a real change to the file: `git update-index --no-skip-worktree config/waypaper/config.ini`,
+  `git add -p` just that change, commit, then set `--skip-worktree` again.
+- Spotify is launched with `--disable-gpu-compositing` (`config/spotify-launcher.conf`). Workaround for
+  blank window on Wayland + NVIDIA; may not be needed on other setups.
+- The temperature module reads the AMD `k10temp` sensor and falls back to Intel `coretemp` (first path
+  that exists wins).
+- After pulling on another machine, re-run `setup.sh`. It's safe to re-run and picks up new packages, new
+  config folders (stow) and the settings above.

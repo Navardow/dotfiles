@@ -1,29 +1,28 @@
 font=Cozette 11
 format=<b>%a ⏵</b> %s\n%b
 sort=-time
-output=eDP-1
 layer=overlay
 anchor=top-right
-background-color=#1E1413
-text-color=#E9D8A2
+background-color=#000000
+text-color=#ffffff
 width=300
 height=110
 margin=5
 padding=0,5,10
-border-size=2
-border-color=#696969
+border-size=1
+border-color=#3a3a3a
 border-radius=10
 icons=1
 max-icon-size=32
-default-timeout=0
+default-timeout=10000
 ignore-timeout=1
-
-[urgency=low]
-border-color=#696969
-
-[urgency=normal]
-border-color=#696969
+# history backs the waybar notification center (waybar/scripts/notifications.py)
+max-history=100
+on-notify=exec pkill -RTMIN+9 -x waybar
 
 [urgency=high]
-border-color=#370001
+border-color=#ff0000
 default-timeout=0
+
+[mode=do-not-disturb]
+invisible=1

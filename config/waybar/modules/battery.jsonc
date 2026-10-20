@@ -1,14 +1,29 @@
 {
     "battery": {
-        "bat": "BAT0",
+        // no "bat": waybar picks the first battery, so it works whatever the laptop names it
         "states": {
-            // "good": 95,
             "warning": 30,
             "critical": 15
         },
-        "format": "{icon}  {capacity}%",
-        // "format-good": "", // An empty format will hide the module
-        // "format-full": "",
-        "format-icons": ["", "", "", "", ""]
+        // icons next to text get rise='-3072' (4px lower) so they center on the numbers
+        "format": "{icon} {capacity}%",
+        "format-charging": "<span font='Material Symbols Rounded 12 @FILL=1,wght=500' rise='-3072'>battery_charging_full</span> {capacity}%",
+        "format-plugged": "<span font='Material Symbols Rounded 12 @FILL=1,wght=500' rise='-3072'>power</span> {capacity}%",
+        "format-full": "<span font='Material Symbols Rounded 12 @FILL=1,wght=500' rise='-3072'>battery_full</span> Full",
+        // left-click toggles time remaining
+        "format-alt": "{icon} {time}",
+        "format-time": "{H}h {M}m",
+        // icons are Material Symbols Rounded ligatures (filled, weight 500), 12pt (16px) like the tray icons
+        "format-icons": [
+            "<span font='Material Symbols Rounded 12 @FILL=1,wght=500' rise='-3072'>battery_0_bar</span>",
+            "<span font='Material Symbols Rounded 12 @FILL=1,wght=500' rise='-3072'>battery_1_bar</span>",
+            "<span font='Material Symbols Rounded 12 @FILL=1,wght=500' rise='-3072'>battery_2_bar</span>",
+            "<span font='Material Symbols Rounded 12 @FILL=1,wght=500' rise='-3072'>battery_3_bar</span>",
+            "<span font='Material Symbols Rounded 12 @FILL=1,wght=500' rise='-3072'>battery_4_bar</span>",
+            "<span font='Material Symbols Rounded 12 @FILL=1,wght=500' rise='-3072'>battery_5_bar</span>",
+            "<span font='Material Symbols Rounded 12 @FILL=1,wght=500' rise='-3072'>battery_6_bar</span>",
+            "<span font='Material Symbols Rounded 12 @FILL=1,wght=500' rise='-3072'>battery_full</span>"
+        ],
+        "tooltip-format": "{timeTo}\n{power:0.1f} W · health {health}%"
     }
 }

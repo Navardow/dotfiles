@@ -1,0 +1,25 @@
+{
+    "mpris": {
+        // follows only the Spotify desktop app; hidden when it isn't running
+        "player": "spotify",
+        // icons are Material Symbols Rounded ligatures (filled, weight 500), lowered to center on the text
+        "format": "{player_icon} {dynamic}",
+        "format-paused": "{status_icon} {dynamic}",
+        "player-icons": {
+            "default": "<span font='Material Symbols Rounded 12 @FILL=1,wght=500' rise='-3072'>music_note</span>"
+        },
+        "status-icons": {
+            "paused": "<span font='Material Symbols Rounded 12 @FILL=1,wght=500' rise='-3072'>pause</span>"
+        },
+        "dynamic-order": ["artist", "title"],
+        "dynamic-separator": " – ",
+        "dynamic-len": 40,
+        "tooltip-format": "{title}\n{artist} · {album}\n{position} / {length}",
+        // left-click opens the popup; middle-click play/pause; scroll changes track
+        "on-click": "python3 ~/.dotfiles/config/waybar/scripts/spotify-popup.py toggle",
+        "on-click-middle": "playerctl -p spotify play-pause",
+        "on-click-right": "playerctl -p spotify next",
+        "on-scroll-up": "playerctl -p spotify next",
+        "on-scroll-down": "playerctl -p spotify previous"
+    }
+}

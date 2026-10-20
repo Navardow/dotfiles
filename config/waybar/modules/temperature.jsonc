@@ -1,5 +1,17 @@
 {
     "temperature": {
-        "format": "{temperatureC}°C"
+        // CPU package temperature: AMD k10temp (desktop and laptop), Intel coretemp as a fallback;
+        // waybar uses the first path that exists
+        "hwmon-path-abs": [
+            "/sys/devices/pci0000:00/0000:00:18.3/hwmon",
+            "/sys/devices/platform/coretemp.0/hwmon"
+        ],
+        "input-filename": "temp1_input",
+        "warning-threshold": 75,
+        "critical-threshold": 90,
+        // icons next to text get rise='-3072' (4px lower) so they center on the numbers
+        "format": "<span font='Material Symbols Rounded 12 @FILL=1,wght=500' rise='-3072'>device_thermostat</span> {temperatureC}°C",
+        "tooltip": false,
+        "on-click": "~/.dotfiles/config/waybar/scripts/sysmon.sh temp"
     }
 }

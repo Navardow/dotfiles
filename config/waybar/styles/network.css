@@ -1,8 +1,10 @@
+/* sits inside the #traybox (tray.css) */
 #network {
+    margin: 0 0 0 10px;
+    padding: 0;
+    color: #aaaaaa;
 }
 
 #network.disconnected {
-    background: #f53c3c;
+    color: red;
 }
-
-

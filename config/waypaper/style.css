@@ -1,11 +1,40 @@
-window {
-    background-color: black;
+/* black/white theme matching waybar, mako, fuzzel and hyprlock */
+
+window,
+.background {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+label {
+    color: #ffffff;
+}
+
+/* buttons, dropdowns, number boxes and text fields: the bar's box style */
+button,
+combobox button,
+spinbutton,
+entry {
+    background-image: none;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    border: 1px solid #3a3a3a;
+    border-radius: 10px;
+    box-shadow: none;
+    text-shadow: none;
+    -gtk-icon-shadow: none;
 }
 
 button:hover {
     background-image: none;
+    background-color: #2a2a2a;
     box-shadow: none;
-    border-color: transparent;
+    border-color: #3a3a3a;
+}
+
+button:checked,
+button:active {
+    background-color: #3a3a3a;
 }
 
 button:hover > image {
@@ -13,13 +42,49 @@ button:hover > image {
     -gtk-icon-effect: none;
 }
 
+check,
+radio {
+    background-image: none;
+    background-color: #1a1a1a;
+    border: 1px solid #3a3a3a;
+    color: #ffffff;
+}
+
+/* the currently selected wallpaper: white outline instead of the theme's blue */
 .highlighted-button {
     background-image: none;
     box-shadow: none;
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: #3a3a3a;
+    border: 1px solid #ffffff;
 }
 
 .highlighted-button > image,
 .highlighted-button:hover > image {
     -gtk-icon-effect: highlight;
+}
+
+/* dropdown lists and right-click menus */
+menu,
+.menu,
+popover,
+.popover {
+    background-color: #000000;
+    color: #ffffff;
+    border: 1px solid #3a3a3a;
+}
+
+menuitem:hover {
+    background-color: #3a3a3a;
+}
+
+scrollbar {
+    background-color: #000000;
+    border: none;
+}
+
+scrollbar slider {
+    background-color: #3a3a3a;
+    border-radius: 10px;
+    min-width: 6px;
+    min-height: 6px;
 }

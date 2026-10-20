@@ -1,18 +1,28 @@
 {
     "clock": {
         "format": "{:%H:%M}",
+        "format-alt": "{:%a %d %b  %H:%M}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "calendar": {
             "mode": "month",
+            "mode-mon-col": 3,
             "weeks-pos": "right",
             "on-scroll": 1,
             "format": {
                 "months": "<span color='#ffffff'><b>{}</b></span>",
-                "days": "<span color='#ffffff'>{}</span>",
-                "weeks": "<span color='#ffffff'><b>W{}</b></span>",
+                "days": "<span color='#aaaaaa'>{}</span>",
+                "weeks": "<span color='#555555'>W{}</span>",
                 "weekdays": "<span color='#ffffff'><b>{}</b></span>",
-                "today": "<span color='#d65d0e'><b><u>{}</u></b></span>"
+                "today": "<span background='#ffffff' color='#000000'><b>{}</b></span>"
             }
+        },
+        // left-click toggles the date; scroll pages the calendar, right-click switches month/year,
+        // middle-click jumps back to today
+        "actions": {
+            "on-click-right": "mode",
+            "on-click-middle": "shift_reset",
+            "on-scroll-up": "shift_up",
+            "on-scroll-down": "shift_down"
         }
     }
 }

@@ -1,5 +1,10 @@
+/* sits inside the #traybox (tray.css) */
 #pulseaudio {
+    margin: 0 0 0 10px;
+    padding: 0;
+    color: #aaaaaa;
 }
 
 #pulseaudio.muted {
+    color: #555555;
 }

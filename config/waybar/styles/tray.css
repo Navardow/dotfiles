@@ -1,13 +1,29 @@
+#traybox {
+    margin: 3px 5px;
+    padding: 0 8px;
+    background-color: #1a1a1a;
+    border: 1px solid #3a3a3a;
+    border-radius: 10px;
+}
+
 #tray {
     margin: 0;
     padding: 0;
 }
 
-#tray* {
-    margin-left: 5px;
-    color: gray;
-}
-
 #tray menu {
     background-color: black;
+}
+
+#custom-notifications {
+    margin-left: 10px;
+    color: #aaaaaa;
+}
+
+#custom-notifications.unread {
+    color: #ffffff;
+}
+
+#custom-notifications.dnd {
+    color: #555555;
 }
