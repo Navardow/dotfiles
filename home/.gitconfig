@@ -16,8 +16,8 @@
 	defaultBranch = main
 [core]
 	editor = nvim
-[remote "origin"]
+[fetch]
     prune = true
 [url "git@github.com:"]
-    InsteadOf = https://github.com/
+    pushInsteadOf = https://github.com/
 
