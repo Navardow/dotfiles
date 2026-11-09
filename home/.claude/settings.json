@@ -70,7 +70,11 @@
       "Bash(git rm *)",
       "Bash(git mv *)",
       "Bash(git -C * rm *)",
-      "Bash(git -C * mv *)"
+      "Bash(git -C * mv *)",
+      "Bash(git push)",
+      "Bash(git push *)",
+      "Bash(git -C * push)",
+      "Bash(git -C * push *)"
     ],
     "ask": [
       "Edit",
