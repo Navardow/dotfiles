@@ -45,7 +45,7 @@ packages=(
     # neovim (config/nvim): plugin builds (telescope-fzf-native, blink.cmp, treesitter) and search
     base-devel rust ripgrep fd tree-sitter-cli
     # neovim LSPs and formatters (config/nvim/lua/lsp, plugins/conform.lua)
-    clang lua-language-server marksman vscode-css-languageserver stylua prettier ruff nodejs npm
+    clang lua-language-server marksman vscode-langservers-extracted stylua prettier ruff nodejs npm
     # caps lock -> escape
     interception-caps2esc
 )
